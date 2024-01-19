@@ -22,4 +22,4 @@ def add(conta: Conta_request, db: Session = Depends(get_db)) -> Conta_response:
     db.add(new_conta)
     db.commit()
     db.refresh(new_conta)
-    return Conta_response(**new_conta.__dict__)
+    return new_conta

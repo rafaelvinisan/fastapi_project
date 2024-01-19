@@ -7,6 +7,10 @@ class Conta_response(BaseModel):
     value: float
     type: str
 
+    class Config:
+        orm_mode = True
+
+
 class Conta_request(BaseModel):
     title: str
     value: float
