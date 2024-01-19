@@ -1,7 +1,7 @@
 from typing import List
 from fastapi import APIRouter, Depends
 from config.dependencies import get_db
-from data_objects.conta import Conta_request, Conta_response, add_conta
+from data_objects.conta import Conta_request, Conta_response
 from sqlalchemy.orm import Session
 from models.conta import Conta
 
