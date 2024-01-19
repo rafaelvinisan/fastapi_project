@@ -7,14 +7,9 @@ from models.conta import Conta
 
 router = APIRouter(prefix='/contas')
 
-
-contas = list()
-add_conta(contas,{"title":"Aluguel", "value":1200, "type":"pagar"})
-add_conta(contas,{"title":"Mercado", "value":500, "type":"receber"})
-
 @router.get('/', response_model=List[Conta_response])
-def list():
-    return contas
+def list(db: Session = Depends(get_db)) -> List[Conta_response]:
+    return db.query(Conta).all()
 
 @router.post('/', response_model=Conta_response, status_code=201)
 def add(conta: Conta_request, db: Session = Depends(get_db)) -> Conta_response:
