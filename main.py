@@ -1,6 +1,11 @@
 import uvicorn
 from fastapi import FastAPI
 import contas
+from config.database import Base, engine
+from models.conta import Conta
+
+Base.metadata.drop_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
