@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-import contas
+import contas_router
 from config.database import Base, engine
 from models.conta import Conta
 
@@ -13,7 +13,7 @@ app = FastAPI()
 def get_name() -> str:
     return 'Rafael'
 
-app.include_router(contas.router)
+app.include_router(contas_router.router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host='127.0.0.1', port=8000)
