@@ -18,3 +18,22 @@ def add(conta: Conta_request, db: Session = Depends(get_db)) -> Conta_response:
     db.commit()
     db.refresh(new_conta)
     return new_conta
+
+@router.put('/{id}', response_model=Conta_response, status_code=200)
+def update(id: int, conta: Conta_request, db: Session = Depends(get_db)) -> Conta_response:
+    update_conta = db.query(Conta).get(id)
+    update_conta.title = conta.title
+    update_conta.value = conta.value
+    update_conta.type = conta.type
+    db.add(update_conta)
+    db.commit()
+    db.refresh(update_conta)
+    return update_conta
+
+@router.delete('/{id}', status_code=200)
+def delete(id: int, db: Session = Depends(get_db)) -> None:
+    conta = db.query(Conta).get(id)
+    db.delete(conta)
+    db.commit()
+
+    

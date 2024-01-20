@@ -4,9 +4,6 @@ import routers.contas_ as contas_
 from settings.database import Base, engine
 from models.conta import Conta
 
-Base.metadata.drop_all(bind=engine)
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI()
 
 @app.get('/')
