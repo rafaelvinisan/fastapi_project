@@ -1,4 +1,4 @@
-from config.database import Base
+from settings.database import Base
 from sqlalchemy import Column, Enum, Numeric, String, Integer
 class Conta(Base):
     __tablename__ = "Conta"

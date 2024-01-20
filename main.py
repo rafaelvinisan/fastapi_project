@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 import contas_router
-from config.database import Base, engine
+from settings.database import Base, engine
 from models.conta import Conta
 
 Base.metadata.drop_all(bind=engine)
