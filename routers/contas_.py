@@ -11,6 +11,10 @@ router = APIRouter(prefix='/contas')
 def list(db: Session = Depends(get_db)) -> List[Conta_response]:
     return db.query(Conta).all()
 
+@router.get('/{id}', response_model=Conta_response)
+def get(id:int, db: Session = Depends(get_db)) -> Conta_response:
+    return db.query(Conta).get(id)
+
 @router.post('/', response_model=Conta_response, status_code=201)
 def add(conta: Conta_request, db: Session = Depends(get_db)) -> Conta_response:
     new_conta = Conta(**conta.dict())
