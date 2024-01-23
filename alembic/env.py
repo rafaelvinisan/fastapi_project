@@ -20,6 +20,7 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 
 from models.conta import Conta 
+from models.fornecedor_cliente import FornecedorCliente
 from settings.database import Base
 target_metadata = Base.metadata
 

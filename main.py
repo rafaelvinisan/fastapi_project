@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from routers import contas
+from routers import contas, fornecedor_cliente
 #from models.conta import Conta
 
 from settings.exceptions import DBEmpty, NotFound
@@ -13,6 +13,7 @@ def get_name() -> str:
     return 'Rafael'
 
 app.include_router(contas.router)
+app.include_router(fornecedor_cliente.router)
 app.add_exception_handler(NotFound, not_found_exception_handler)
 
 if __name__ == "__main__":
